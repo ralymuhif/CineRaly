@@ -29,7 +29,8 @@ router.post("/", async (req, res) => {
   });
   try {
     const newGenre = await genre.save();
-    res.redirect(`genre/${newGenre.id}`);
+    //  res.redirect("genre/${newGenre.id}");
+    res.redirect("genres");
   } catch {
     res.render("genres/new", {
       genre: genre,

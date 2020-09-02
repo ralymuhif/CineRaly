@@ -8,4 +8,6 @@
 <br />
 <%genres.forEach(genre=>{%>
 <div><%=genre.name%></div>
-<%}) %>
+<a href="/genres/<%= genre.id%>">View</a>
+<a href="/genres/<%= genre.id%>/edit">Edit</a>
+<%- include('../partials/deleteForm', {url:`/genres/${genre.id}`})%> <%}) %>

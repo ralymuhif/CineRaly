@@ -1,18 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const multer = require("multer");
-const path = require("path");
-const fs = require("fs");
 const Movie = require("../models/movie");
 const Genre = require("../models/genre");
-const uploadPath = path.join("public", Movie.coverImageBasePath);
 const imageMimeTypes = ["image/jpeg", "image/png", "image/gif"];
-const upload = multer({
-  dest: uploadPath,
-  fileFilter: (req, file, callback) => {
-    callback(null, imageMimeTypes.includes(file.mimetype));
-  },
-});
 
 // All Movies Route
 router.get("/", async (req, res) => {
@@ -43,33 +33,23 @@ router.get("/new", async (req, res) => {
 });
 
 // Create Movie Route
-router.post("/", upload.single("cover"), async (req, res) => {
-  const fileName = req.file != null ? req.file.filename : null;
+router.post("/", async (req, res) => {
   const movie = new Movie({
     title: req.body.title,
     genre: req.body.genre,
     releaseDate: new Date(req.body.releaseDate),
     length: req.body.length,
-    coverImageName: fileName,
     description: req.body.description,
   });
+  saveCover(movie, req.body.cover);
   try {
     const newMovie = await movie.save();
     // res.redirect("movies/${newMovie.id}");
     res.redirect("movies");
   } catch {
-    if (movie.coverImageName != null) {
-      removeMovieCover(movie.coverImageName);
-    }
     renderNewPage(res, movie, true);
   }
 });
-
-function removeMovieCover(fileName) {
-  fs.unlink(path.join(uploadPath, fileName), (err) => {
-    if (err) console.error(err);
-  });
-}
 
 async function renderNewPage(res, movie, hasError = false) {
   try {
@@ -82,6 +62,15 @@ async function renderNewPage(res, movie, hasError = false) {
     res.render("movies/new", params);
   } catch {
     res.redirect("/movies");
+  }
+}
+
+function saveCover(movie, coverEncoded) {
+  if (coverEncoded == null) return;
+  const cover = JSON.parse(coverEncoded);
+  if (cover != null && imageMimeTypes.includes(cover.type)) {
+    movie.coverImage = new Buffer.from(cover.data, "base64");
+    movie.coverImageType = cover.type;
   }
 }
 

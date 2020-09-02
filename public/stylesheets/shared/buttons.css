@@ -1,0 +1,40 @@
+.btn {
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  font-family: "Gotham Rounded";
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn-row {
+  display: flex;
+  align-items: flex-start;
+}
+
+.btn-row > * {
+  margin-left: 1rem;
+}
+
+.btn-row > *:first-child {
+  margin-left: 0;
+}
+
+.btn-primary {
+  color: #0b0c10;
+  background-color: #45a29e;
+}
+.btn-primary:hover {
+  color: #0b0c10;
+  background-color: #66fcf1;
+}
+.btn-danger {
+  color: #0b0c10;
+  background-color: #ac3b61;
+}
+.btn-danger:hover {
+  color: #0b0c10;
+  background-color: #ee4c7c;
+}

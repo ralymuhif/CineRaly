@@ -38,7 +38,7 @@ router.post("/", async (req, res) => {
     });
   }
 });
-
+// Show Genre Route
 router.get("/:id", async (req, res) => {
   try {
     const genre = await Genre.findById(req.params.id);
@@ -51,6 +51,7 @@ router.get("/:id", async (req, res) => {
     res.redirect("/");
   }
 });
+// Edit Genre Route
 router.get("/:id/edit", async (req, res) => {
   try {
     const genre = await Genre.findById(req.params.id);
@@ -59,6 +60,7 @@ router.get("/:id/edit", async (req, res) => {
     res.redirect("/genres");
   }
 });
+// Update Genre Route
 router.put("/:id", async (req, res) => {
   let genre;
   try {
@@ -77,6 +79,7 @@ router.put("/:id", async (req, res) => {
     }
   }
 });
+// Delete genre page
 router.delete("/:id", async (req, res) => {
   let genre;
   try {

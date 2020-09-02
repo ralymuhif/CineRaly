@@ -4,5 +4,7 @@
 (moviesInGenre.length > 0){%>
 <h2>Movies in Genre</h2>
 <% moviesInGenre.forEach(movie=>{%>
-<img height="150" width="100" src="<%= movie.coverImagePath%>" />
+<a href="/movies/<%= movie.id%>">
+  <img height="150" width="100" src="<%= movie.coverImagePath%>" />
+</a>
 <%}) %> <%}%>

@@ -1,8 +1,11 @@
 <h2 class="page-header"><%= genre.name%></h2>
-<a href="/genres/<%= genre.id%>/edit">Edit</a>
-<%- include ("../partials/deleteForm", {url: `/genres/${genre.id}`})%> <% if
-(moviesInGenre.length > 0){%>
-<h2>Movies in Genre</h2>
+<div class="btn-row">
+  <a class="btn btn-primary" href="/genres/<%= genre.id%>/edit">Edit</a>
+  <%- include ("../partials/deleteForm", {url: `/genres/${genre.id}`})%>
+</div>
+
+<% if (moviesInGenre.length > 0){%>
+<h2 class="page-header">Movies in Genre</h2>
 <% moviesInGenre.forEach(movie=>{%>
 <a href="/movies/<%= movie.id%>">
   <img height="150" width="100" src="<%= movie.coverImagePath%>" />

@@ -1,29 +1,34 @@
 <h2 class="page-header">Search Movie</h2>
 
 <form action="/movies" method="GET">
-  <div>
-    <label for="">Title</label>
-    <input type="text" name="title" value="<%=searchOptions.title%>" />
+  <div class="form-row">
+    <div class="form-item">
+      <label for="">Title</label>
+      <input type="text" name="title" value="<%=searchOptions.title%>" />
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-item">
+      <label for="">Released After</label>
+      <input
+        type="date"
+        name="releasedAfter"
+        value="<%=searchOptions.releasedAfter%>"
+      />
+    </div>
+    <div class="form-item">
+      <label for="">Released Before</label>
+      <input
+        type="date"
+        name="releasedBefore"
+        value="<%=searchOptions.releasedBefore%>"
+      />
+    </div>
   </div>
 
-  <div>
-    <label for="">Released After</label>
-    <input
-      type="date"
-      name="releasedAfter"
-      value="<%=searchOptions.releasedAfter%>"
-    />
+  <div class="form-row form-row-end">
+    <button class="btn btn-primary" type="submit">Search</button>
   </div>
-  <div>
-    <label for="">Released Before</label>
-    <input
-      type="date"
-      name="releasedBefore"
-      value="<%=searchOptions.releasedBefore%>"
-    />
-  </div>
-
-  <button type="submit">Search</button>
 </form>
 <div>
   <% movies.forEach(movie=>{%>

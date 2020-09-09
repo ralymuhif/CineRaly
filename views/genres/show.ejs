@@ -6,8 +6,4 @@
 
 <% if (moviesInGenre.length > 0){%>
 <h2 class="page-header">Movies in Genre</h2>
-<% moviesInGenre.forEach(movie=>{%>
-<a href="/movies/<%= movie.id%>">
-  <img height="150" width="100" src="<%= movie.coverImagePath%>" />
-</a>
-<%}) %> <%}%>
+<%- include ("../partials/bookGrid", {movies:moviesInGenre})%> <%}%>

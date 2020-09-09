@@ -13,9 +13,12 @@
 </form>
 <br />
 <%genres.forEach(genre=>{%>
-<div><%=genre.name%></div>
-<div class="btn-row">
-  <a class="btn btn-primary" href="/genres/<%= genre.id%>">View</a>
-  <a class="btn btn-primary" href="/genres/<%= genre.id%>/edit">Edit</a>
-  <%- include('../partials/deleteForm', {url:`/genres/${genre.id}`})%> <%}) %>
+<div class="genre-row">
+  <div class="genre-name"><%=genre.name%></div>
+  <div class="btn-row">
+    <a class="btn btn-primary" href="/genres/<%= genre.id%>">View</a>
+    <a class="btn btn-primary" href="/genres/<%= genre.id%>/edit">Edit</a>
+    <%- include('../partials/deleteForm', {url:`/genres/${genre.id}`})%>
+  </div>
 </div>
+<%}) %>

@@ -2,6 +2,8 @@
 @import "shared/header.css";
 @import "shared/buttons.css";
 @import "shared/form.css";
+@import "shared/genre.css";
+@import "shared/movies.css";
 
 :root {
   font-family: "Gotham Rounded";
@@ -30,4 +32,7 @@ body {
 .page-header {
   font-size: 2rem;
   font-weight: 500;
+}
+.error-message {
+  color: #ac3b61;
 }
